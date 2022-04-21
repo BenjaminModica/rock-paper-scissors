@@ -39,6 +39,7 @@ body {
 
 .buttons button:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 1rem #050505;
 }
 
 .resultContainer div {
