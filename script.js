@@ -54,8 +54,9 @@ playAgainBtn.addEventListener('click', () => window.location.href=window.locatio
 //Updates DOM with results, adds playAgainBtn and disables multiple choice buttons
 function showResult(playerSelection, computerSelection, result) {
     console.log(playerSelection + computerSelection + result);
-
     const resultContainer = document.querySelector('.resultContainer')
+
+    //Text displaying player and computer choices. 
     const playerChoice = document.createElement('div');
     playerChoice.textContent = `You Chose ${playerSelection}`;
     playerChoice.classList.add('playerchoice');
@@ -66,7 +67,9 @@ function showResult(playerSelection, computerSelection, result) {
     resultContainer.appendChild(playerChoice);
     setTimeout(() => resultContainer.appendChild(computerChoice), 1000);
 
+    //Displays who won
     const result1 = document.createElement('div');
+    //Explains result
     const result2 = document.createElement('div');
 
     if (result == "tie") {
