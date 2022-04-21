@@ -6,77 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <script>
-        //Generates rock, paper or scissors strings randomly
-        function computerPlay() {
-            let pickNbr = Math.floor(Math.random() * 3);
-            let pickString;
-            switch (pickNbr) {
-                case 0:
-                    pickString = "Rock";
-                    break;
-                case 1:
-                    pickString = "Paper";
-                    break;
-                case 2:
-                    pickString = "Scissors";
-                    break;
-                default:
-                    console.error("Default case should not happen");
-            } return pickString;
-        }
+    <div class="header">
+        <h1>Rock Paper Scissors</h1>
+    </div>
 
-        //Evaluates winner from player and computer selections
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1).toLowerCase();
-            const playerWinCombos = ["Rock-Scissors", "Scissors-Paper", "Paper-Rock"];
-            let roundCombo = `${playerSelection}-${computerSelection}`;
+    <div class="game-content">
+        <div class="instruction">
+            <p>Make Your Choice:</p>
+        </div>
+        <div class="buttons">
+            <button id="rockBtn">
+                <img src="rock.png">
+            </button>
+            <button id="paperBtn">
+                <img src="paper.png">
+            </button>
+            <button id="scissorsBtn">
+                <img src="scissors.png">
+            </button>
+        </div>
+        <div class="resultContainer">
 
-            if (playerSelection === computerSelection) {
-                return `It's a tie! Computer also chose ${computerSelection}`;
-            } else if (playerWinCombos.includes(roundCombo)) {
-                return `You win! ${playerSelection} beats ${computerSelection}`;
-            } else {
-                return `You lose! ${computerSelection} beats ${playerSelection}`;
-            }
-        }
-
-        //Plays a game of 5 rounds and evaluates winner
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i < 5; i++) {
-                let playerRoundSelection = prompt("Make your choice! Rock, Paper och Scissors");
-                let result = playRound(playerRoundSelection, computerPlay());
-                console.log(result);
-
-                if (result.includes("tie")) {
-                    playerScore++;
-                    computerScore++;
-                } else if (result.includes("win")) {
-                    playerScore++;
-                } else if (result.includes("lose")) {
-                    computerScore++;
-                }
-            }
-            if (playerScore > computerScore) {
-                console.log(`You win the game! 
-                Player: ${playerScore} points
-                Computer: ${computerScore} points`);
-            } else if (computerScore > playerScore) {
-                console.log(`You lose the game!
-                Player: ${playerScore} points
-                Computer: ${computerScore} points`);
-            } else {
-                console.log(`The game is a tie!
-                Player: ${playerScore} points
-                Computer: ${computerScore} points`);
-            }
-        }
-    </script>
+        </div>
+    </div>
+    <script type="text/javascript" src="/script.js"></script>
 </body>
 
 </html>
