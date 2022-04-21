@@ -35,6 +35,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//Buttons and eventlisteners for multiple choices
 const rockBtn = document.querySelector('#rockBtn');
 rockBtn.addEventListener('click', () => playRound('Rock', computerPlay()));
 const paperBtn = document.querySelector('#paperBtn');
@@ -42,24 +43,28 @@ paperBtn.addEventListener('click', () => playRound('Paper', computerPlay()));
 const scissorsBtn = document.querySelector('#scissorsBtn');
 scissorsBtn.addEventListener('click', () => playRound('Scissors', computerPlay()));
 
+//Play again button, appears after result is shown
 const playAgainBtn = document.createElement('button');
 playAgainBtn.textContent = "Play Again?";
 playAgainBtn.setAttribute('style', 'width: 100px; height: 45px; align-self: center; margin-top: 15px');
 
+//Refresh page on play again button
 playAgainBtn.addEventListener('click', () => window.location.href=window.location.href);
 
-//Updates DOM with results, adds playAgainBtn and disables choice buttons
+//Updates DOM with results, adds playAgainBtn and disables multiple choice buttons
 function showResult(playerSelection, computerSelection, result) {
     console.log(playerSelection + computerSelection + result);
 
     const resultContainer = document.querySelector('.resultContainer')
     const playerChoice = document.createElement('div');
-    playerChoice.textContent = `You Chose: ${playerSelection}`;
+    playerChoice.textContent = `You Chose ${playerSelection}`;
+    playerChoice.classList.add('playerchoice');
     const computerChoice = document.createElement('div');
-    computerChoice.textContent = `Computer Chose: ${computerSelection}`;
+    computerChoice.textContent = `Computer Chose ${computerSelection}`;
+    computerChoice.classList.add('computerchoice');
 
     resultContainer.appendChild(playerChoice);
-    resultContainer.appendChild(computerChoice);
+    setTimeout(() => resultContainer.appendChild(computerChoice), 1000);
 
     const result1 = document.createElement('div');
     const result2 = document.createElement('div');
@@ -78,11 +83,12 @@ function showResult(playerSelection, computerSelection, result) {
     }
 
     result1.setAttribute('style', 'font-size: 35px; align-self: center; padding-top: 50px')
-    resultContainer.appendChild(result1);
+    setTimeout(() => resultContainer.appendChild(result1), 3100);
+    
     result2.setAttribute('style', 'align-self: center; font-weight: 100; font-size: 10px; padding-top: 0px')
-    resultContainer.appendChild(result2);
+    setTimeout(() => resultContainer.appendChild(result2), 3100);
 
-    resultContainer.appendChild(playAgainBtn);
+    setTimeout(() => resultContainer.appendChild(playAgainBtn), 4500);
 
     paperBtn.disabled = true;
     scissorsBtn.disabled = true;
